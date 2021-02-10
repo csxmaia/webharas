@@ -8,6 +8,7 @@ import {
 import Home from './pages/Home'
 import Registrar from './pages/Registrar'
 import Listar from './pages/Cavalos/Listar'
+import Cadastrar from  './pages/Cavalos/Cadastrar'
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
               <Switch>
                 <Route path="/cavalos">
                   <Listar />
+                </Route>
+                <Route path="/cadastrar/cavalo">
+                  <Cadastrar />
                 </Route>
                 <Route path="/registrar">
                   <Registrar />
