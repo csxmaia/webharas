@@ -20,11 +20,10 @@ function App() {
         <div style={{display: 'flex', minWidth: '660px', alignItems: 'center', flexDirection: 'column', borderWidth: '1px', borderStyle: 'solid'}}>
           <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}> */
           <div class="container">
-            <div class='row mx-lg-n5'>
-              <div class="col py-3 px-lg-5 border bg-light">
-                <h1 class="text-center">Webharas</h1></div>
+            <div class='row mx-lg-n1'>
+              <div class="col py-3 px-lg-5 border bg-secondary">
+                <h1 class="text-center text-monospace ">Webharas</h1></div>
             </div>
-            <form>
             <Router>
               <Switch>
                 <Route path="/cavalos">
@@ -47,7 +46,6 @@ function App() {
                 </Route>
               </Switch>
             </Router>
-          </form>
           </div>
 
 

@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 
 function Home() {
   return (
+    <div class="card">
     <div class="container">
       <div class="container text-center">
         <br></br>
@@ -22,9 +23,8 @@ function Home() {
         <div class="form-group">
           <Link to="/haras"><button style={{width: '20%'}}  type="button" class="btn btn-primary">Haras</button></Link>
         </div>
-
-
       </div>
+    </div>
     </div>
   )
 }
