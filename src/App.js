@@ -5,6 +5,7 @@ import {
   Route,
   Link
 } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './pages/Home'
 import Registrar from './pages/Registrar'
 import Listar from './pages/Cavalos/Listar'
@@ -14,15 +15,16 @@ import ListarHaras from './pages/Haras/Listar'
 
 function App() {
   return (
-    <div style={{justifyContent: 'center'}}>
+/*     <div class='container'style={{justifyContent: 'center'}}>
       <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
         <div style={{display: 'flex', minWidth: '660px', alignItems: 'center', flexDirection: 'column', borderWidth: '1px', borderStyle: 'solid'}}>
-          <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-            <div>
-              <h2>Webharas</h2>
+          <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}> */
+          <div class="container">
+            <div class='row mx-lg-n5'>
+              <div class="col py-3 px-lg-5 border bg-light">
+                <h1 class="text-center">Webharas</h1></div>
             </div>
-          </div>
-          <div style={{borderWidth: '1px', borderStyle: 'solid', width: '100%'}}>
+            <form>
             <Router>
               <Switch>
                 <Route path="/cavalos">
@@ -40,21 +42,15 @@ function App() {
                 <Route path="/haras">
                   <ListarHaras/>
                 </Route>
-                <Route path="/login">
-                  {/* <Login /> */}
-                </Route>
-                <Route path="/admin">
-                  {/* <Login /> */}
-                </Route>
                 <Route exact path="/">
                   <Home />
                 </Route>
               </Switch>
             </Router>
+          </form>
           </div>
-        </div>
-      </div>
-    </div>
+
+
   );
 }
 

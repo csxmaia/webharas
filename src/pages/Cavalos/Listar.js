@@ -19,11 +19,11 @@ function Listar() {
     <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
       <div style={{display: 'flex', width: '100%'}}>
         <div style={{flex: '1'}}>
-          Listagem de cavalos
+          <h4>Listagem de cavalos</h4>
         </div>
         <div style={{flex: '1', textAlign: 'right'}}>
           <Link to="/cadastrar/cavalo">
-            <button>
+            <button type="button" class="btn btn-primary mb-2">
               Cadastrar um cavalo
             </button>
           </Link>

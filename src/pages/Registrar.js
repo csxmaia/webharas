@@ -43,33 +43,51 @@ function Registrar() {
   }
   //return exibe o que vai ser exibido na tela
   return (
-    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-      Registrar
+    <div class="form-group"style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+      <h4>Registrar</h4>
       <form onSubmit={e => saveData(e)}>
-        <div style={{display: 'flex', flexDirection: 'column'}}>
-          Nome:
-          <input onChange={e => setNome(e.target.value)}/>
+        <div class="input-group input-group-lg mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Nome</span>
+          </div>
+          <input type="text" class="form-control" onChange={e => setNome(e.target.value)}/>
         </div>
-        <div style={{display: 'flex', flexDirection: 'column'}}>
-          Email:
-          <input onChange={e => setEmail(e.target.value)}/>
+
+        <div class="input-group input-group-lg mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">E-mail</span>
+          </div>
+          <input type="text" class="form-control"onChange={e => setEmail(e.target.value)}/>
         </div>
-        <div style={{display: 'flex', flexDirection: 'column'}}>
-          Cpf:
-          <input onChange={e => setCpf(e.target.value)}/>
+        
+        <div class="input-group input-group-lg mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">CPF</span>
+          </div>
+          <input type="text" class="form-control" onChange={e => setCpf(e.target.value)}/>
         </div>
-        <div style={{display: 'flex', flexDirection: 'column'}}>
-          Telefone:
-          <input onChange={e => setTelefone(e.target.value)}/>
+        
+        <div class="input-group input-group-lg mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Telefone</span>
+          </div>
+          <input type="text" class="form-control" onChange={e => setTelefone(e.target.value)}/>
         </div>
-        <div style={{display: 'flex', flexDirection: 'column'}}>
-          Whatsapp:
-          <input onChange={e => setWhatsapp(e.target.value)}/>
+        
+        <div class="input-group input-group-lg mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Whatsapp</span>
+          </div>
+          <input type="text" class="form-control" onChange={e => setWhatsapp(e.target.value)}/>
         </div>
-        <div style={{display: 'flex', flexDirection: 'column'}}>
-          Senha:
-          <input onChange={e => setSenha(e.target.value)}/>
+        
+        <div class="input-group input-group-lg mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Senha</span>
+          </div>
+          <input type="password" class="form-control" onChange={e => setSenha(e.target.value)}/>
         </div>
+        
         {
           //Como a busca da cidade demora uma quantidade consideravel de tempo lá no useEffect, devemos fazer a condição
           //de que o select da cidade só exiba quando for diferente de indefinido (undefined)
@@ -89,11 +107,15 @@ function Registrar() {
           </select>
           : null
         }
-        <div style={{display: 'flex', flexDirection: 'column'}}>
-          Cidade:
-          <input onChange={e => setCidade_id(e.target.value)}/>
+        
+        <div class="input-group input-group-lg mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Cidade</span>
+          </div>
+          <input type="text" class="form-control"onChange={e => setCidade_id(e.target.value)}/>
         </div>
-        <button style={{float: 'right', marginTop: '16px'}} type="submit">Salvar</button>
+        
+        <button type="button" class="btn btn-success mb-2" style={{float: 'right', marginTop: '16px'}} type="submit">Salvar</button>
       </form>
     </div>
   )

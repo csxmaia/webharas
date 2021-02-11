@@ -23,7 +23,7 @@ function Listar() {
         </div>
         <div style={{flex: '1', textAlign: 'right'}}>
           <Link to="/cadastrar/haras">
-            <button>
+            <button type="button" class="btn btn-primary mb-2">
               Cadastrar um Haras
             </button>
           </Link>
