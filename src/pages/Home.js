@@ -17,6 +17,11 @@ function Home() {
         {/* <div>
           <Link to="/admin"><button>Admin</button></Link>
         </div> */}
+        <div>
+          <Link to="/haras"><button>Haras</button></Link>
+        </div>
+
+
       </div>
     </div>
   )

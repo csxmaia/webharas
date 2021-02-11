@@ -9,6 +9,8 @@ import Home from './pages/Home'
 import Registrar from './pages/Registrar'
 import Listar from './pages/Cavalos/Listar'
 import Cadastrar from  './pages/Cavalos/Cadastrar'
+import CadadastrarHaras from './pages/Haras/Cadastrar'
+import ListarHaras from './pages/Haras/Listar'
 
 function App() {
   return (
@@ -31,6 +33,12 @@ function App() {
                 </Route>
                 <Route path="/registrar">
                   <Registrar />
+                </Route>
+                <Route path="/cadastrar/haras">
+                  <CadadastrarHaras/>
+                </Route>
+                <Route path="/haras">
+                  <ListarHaras/>
                 </Route>
                 <Route path="/login">
                   {/* <Login /> */}
