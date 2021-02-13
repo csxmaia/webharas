@@ -15,17 +15,20 @@ function Listar() {
     }
     getCavalos()
   }, [])
-  
+
   return (
-    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-      <div style={{display: 'flex', width: '100%'}}>
-        <div style={{flex: '1'}}>
-          Listagem de cavalos
-        </div>
-        <div style={{flex: '1', textAlign: 'right'}}>
-          <Link to="/cadastrar/cavalo">
-            <button>
-              Cadastrar um cavalo
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-9">
+          <div class="card">
+            <div class="card-header text-center"><h4>Listagem de Cavalos</h4></div>
+            <div class="card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <div style={{ display: 'flex', width: '100%' }}>
+                <div style={{ flex: '1', textAlign: 'right' }}>
+                  <Link to="/cadastrar/cavalo">
+                    <button type="button" class="btn btn-primary mb-2">
+                      Cadastrar um cavalo
             </button>
           </Link>
         </div>

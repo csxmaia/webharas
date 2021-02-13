@@ -3,21 +3,28 @@ import {Link} from 'react-router-dom'
 
 function Home() {
   return (
-    <div style={{display: 'flex', justifyContent: 'center', flexDirection: 'row'}}>
-      <div style={{textAlign: 'center'}}>
-        <div>
-          <Link to="/registrar"><button>Registrar</button></Link>
+    <div class="card">
+    <div class="container">
+      <div class="container text-center">
+        <br></br>
+
+        <div class="form-group">
+          <Link to="/registrar"><button style={{width: '20%'}} type="button"  class="btn btn-primary">Registrar</button></Link>
         </div>
-        <div>
-          <Link to="/login"><button>Login</button></Link>
+        <div class="form-group">
+          <Link to="/login"><button style={{width: '20%'}} type="button" class="btn btn-primary">Login</button></Link>
         </div>
-        <div>
-          <Link to="/cavalos"><button>Cavalos</button></Link>
+        <div class="form-group" >
+          <Link to="/cavalos"><button style={{width: '20%'}} type="button" class="btn btn-primary">Cavalos</button></Link>
         </div>
         {/* <div>
           <Link to="/admin"><button>Admin</button></Link>
         </div> */}
+        <div class="form-group">
+          <Link to="/haras"><button style={{width: '20%'}}  type="button" class="btn btn-primary">Haras</button></Link>
+        </div>
       </div>
+    </div>
     </div>
   )
 }
