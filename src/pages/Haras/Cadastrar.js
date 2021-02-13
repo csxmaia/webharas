@@ -77,11 +77,13 @@ function Cadastrar() {
                                     </div>
                                     <input type="text" class="form-control" onChange={e => setDescricao(e.target.value)} />
                                 </div>
-                                <div>
-                                    Cidade
+                                <div class="input-group input-group-lg mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm">Cidade</span>
+                                    </div>
                                     {
                                         cidades !== undefined ?
-                                            <select onChange={(e) => setCidade_id(e.target.value)}>
+                                            <select class="form-control" onChange={(e) => setCidade_id(e.target.value)}>
                                                 <option value={0}>Selecione...</option>
                                                 {cidades.map((item) => (
                                                     <option value={item.id}>{item.nome}</option>
@@ -90,11 +92,13 @@ function Cadastrar() {
                                             : null
                                     }
                                 </div>
-                                <div>
-                                    Seu usuario
+                                <div class="input-group input-group-lg mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm">Seu Usuário</span>
+                                    </div>
                                     {
                                         usuarios !== undefined ?
-                                            <select onChange={(e) => setUsuario_id(e.target.value)}>
+                                            <select class="form-control" onChange={(e) => setUsuario_id(e.target.value)}>
                                                 <option value={0}>Selecione...</option>
                                                 {usuarios.map((item) => (
                                                     <option value={item.id}>{item.nome}</option>
@@ -103,8 +107,8 @@ function Cadastrar() {
                                             : null
                                     }
                                 </div>
-                                <br/>
-                                <h4>Contato</h4>
+                                <br />
+                                <div class="card-header text-center"><h4>Contato</h4></div>
                                 <div class="input-group input-group-lg mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="inputGroup-sizing-sm">Nome</span>

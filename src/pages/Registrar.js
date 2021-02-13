@@ -103,15 +103,21 @@ function Registrar() {
                   // :
                   //    codigo caso falso
                 }
-                {
-                  cidades !== undefined ?
-                    <select onChange={(e) => setCidade_id(e.target.value)}>
-                      {cidades.map((item) => (
-                        <option value={item.id}>{item.nome}</option>
-                      ))}
-                    </select>
-                    : null
-                }
+                <div class="input-group input-group-lg mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Cidade</span>
+                  </div>
+                  {
+                    cidades !== undefined ?
+                      <select class="form-control" onChange={(e) => setCidade_id(e.target.value)}>
+                        <option value={0}>Selecione...</option>
+                        {cidades.map((item) => (
+                          <option value={item.id}>{item.nome}</option>
+                        ))}
+                      </select>
+                      : null
+                  }
+                </div>
 
                 <div class="text-center">
                   <button class="btn btn-success mb-2" type="submit">Salvar</button>
