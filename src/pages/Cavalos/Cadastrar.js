@@ -16,7 +16,6 @@ function Cadastrar() {
     const [gereros, setGeneros] = useState();
     const [habilidades, setHabilidades] = useState();
     const [haras, setHaras] = useState();
-    const [linhagens, setLinhagens] = useState();
     const [pelagens, setPelagens] = useState();
     const [preco, setPreco] = useState();
     const [racas, setRacas] = useState();
@@ -27,7 +26,6 @@ function Cadastrar() {
     const [genero_id, setGenero_id] = useState();
     const [habilidade_id, setHabilidade_id] = useState();
     const [haras_id, setHaras_id] = useState();
-    const [linhagem_id, setLinhagem_id] = useState();
     const [pelagem_id, setPelagem_id] = useState();
     const [raca_id, setRaca_id] = useState();
     const [usuario_id, set_Usuario_id] = useState();
@@ -42,86 +40,55 @@ function Cadastrar() {
             } = await api.get("/cidade")
             setCidades(data)
         }
-
-        getCidade()
-    }, [])
-
-    useEffect(() => {
-        async function getGenero() {
+         async function getGenero() {
             const {
                 data
             } = await api.get("/genero")
             setGeneros(data)
         }
-        getGenero()
-    }, [])
-    useEffect(() => {
         async function getHabilidade() {
             const {
                 data
             } = await api.get("/habilidade")
             setHabilidades(data)
         }
-        getHabilidade()
-    }, [])
-
-    useEffect(() => {
         async function getHaras() {
             const {
                 data
             } = await api.get("/haras")
             setHaras(data)
         }
-        getHaras()
-    }, [])
-
-    useEffect(() => {
-        async function getLinhagem() {
-            const {
-                data
-            } = await api.get("/linhagem")
-            setLinhagens(data)
-        }
-        getLinhagem()
-    }, [])
-
-    useEffect(() => {
         async function getPelagem() {
             const {
                 data
             } = await api.get("/pelagem")
             setPelagens(data)
         }
-        getPelagem()
-    }, [])
-
-    useEffect(() => {
         async function getRaca() {
             const {
                 data
             } = await api.get("/raca")
             setRacas(data)
         }
-        getRaca()
-    }, [])
-
-    useEffect(() => {
         async function getUsuario() {
             const {
                 data
             } = await api.get("/usuario")
             setUsuarios(data)
         }
-        getUsuario()
-    }, [])
-
-    useEffect(() => {
         async function getVideo() {
             const {
                 data
             } = await api.get("/video")
             setVideos(data)
         }
+        getCidade()
+        getGenero()
+        getHabilidade()
+        getHaras()
+        getPelagem()
+        getRaca()
+        getUsuario()
         getVideo()
     }, [])
 
@@ -137,14 +104,12 @@ function Cadastrar() {
             cidade_id,
             habilidade_id,
             haras_id,
-            linhagem_id,
             pelagem_id,
             preco,
             raca_id,
             usuario_id,
             video_id
         }
-        console.warn(nome)
         //estrutura para enviar os dados para a url
         const response = await api.post("/cavalo", data)
     }
@@ -211,225 +176,125 @@ function Cadastrar() {
                                         //    codigo caso verdadeiro
                                         // :
                                         //    codigo caso falso
-                                    } {
-                                        cidades !== undefined ?
-                                            <select > {
-                                                cidades.map((item) => (<
-                                                    option value={
-                                                        item.id
-                                                    } > {
-                                                        item.nome
-                                                    } </option>
-                                                ))
-                                            } </select> :
-                                            null
-                                    }
-                                    <div class="input-group input-group-mb mb-3" >
-                                        <div class="input-group-prepend" >
-                                            <span class="input-group-text"
-                                                id="inputGroup-sizing-sm" > Cidade </span> </div> <
-                                            input type="text"
-                                            class="form-control"
-                                            onChange={
-                                                e => setCidade_id(e.target.value)
-                                            }
-                                        /> </div>
-
-                                    {
-                                        gereros !== undefined ?
-                                            <select> {
-                                                gereros.map((item) => (
-                                                    <option value={
-                                                        item.id
-                                                    } > {
+                                    } 
+                                    <div>
+                                        {
+                                            cidades !== undefined ?
+                                                <select onChange={(e) => setCidade_id(e.target.value)}> {
+                                                    cidades.map((item) => (<
+                                                        option value={
+                                                            item.id
+                                                        } > {
                                                             item.nome
                                                         } </option>
-                                                ))
-                                            } </select> :
-                                            null
-                                    }
-                                    <div class="input-group input-group-mb mb-3" >
-                                        <div class="input-group-prepend" >
-                                            <span class="input-group-text"
-                                                id="inputGroup-sizing-sm" > Genero </span> </div>
-                                        <input type="text"
-                                            class="form-control"
-                                            onChange={
-                                                e => setGenero_id(e.target.value)
-                                            } />
+                                                    ))
+                                                } </select> :
+                                                null
+                                        }
                                     </div>
-
-                                    {
-                                        habilidades !== undefined ?
-                                            <select > {
-                                                habilidades.map((item) => (
-                                                    <option value={
-                                                        item.id
-                                                    } > {
-                                                            item.tipo
-                                                        } </option>
-                                                ))
-                                            } </select> :
-                                            null
-                                    }
-                                    <div class="input-group input-group-mb mb-3" >
-                                        <div class="input-group-prepend" >
-                                            <span class="input-group-text"
-                                                id="inputGroup-sizing-sm" > Habilidades </span>
-                                        </div>
-                                        <input type="text"
-                                            class="form-control"
-                                            onChange={
-                                                e => setHabilidade_id(e.target.value)
-                                            } /> </div>
-
-                                    {
-                                        haras !== undefined ?
-                                            <select > {
-                                                haras.map((item) => (
-                                                    <option value={
-                                                        item.id
-                                                    }> {
-                                                            item.nome
-                                                        } </option>
-                                                ))
-                                            } </select> :
-                                            null
-                                    }
-                                    <div class="input-group input-group-mb mb-3" >
-                                        <div class="input-group-prepend" >
-                                            <span class="input-group-text"
-                                                id="inputGroup-sizing-sm" > Haras </span>
-                                        </div>
-                                        <input type="text"
-                                            class="form-control"
-                                            onChange={
-                                                e => setHaras_id(e.target.value)
-                                            } />
+                                    <div>
+                                        {
+                                            gereros !== undefined ?
+                                                <select  onChange={(e) => setGenero_id(e.target.value)}> {
+                                                    gereros.map((item) => (
+                                                        <option value={
+                                                            item.id
+                                                        } > {
+                                                                item.nome
+                                                            } </option>
+                                                    ))
+                                                } </select> :
+                                                null
+                                        }
                                     </div>
-
-                                    {
-                                        linhagens !== undefined ?
-                                            <select > {
-                                                linhagens.map((item) => (
-                                                    <option value={
-                                                        item.id
-                                                    } > {
-                                                            item.nome
-                                                        } </option>
-                                                ))
-                                            } </select> :
-                                            null
-                                    }
-                                    <div class="input-group input-group-mb mb-3" >
-                                        <div class="input-group-prepend" >
-                                            <span class="input-group-text"
-                                                id="inputGroup-sizing-sm" > Linhagem </span>
-                                        </div>
-                                        <input type="text"
-                                            class="form-control"
-                                            onChange={
-                                                e => setLinhagem_id(e.target.value)
-                                            } />
+                                    <div>
+                                        {
+                                            habilidades !== undefined ?
+                                                <select onChange={(e) => setHabilidade_id(e.target.value)}> {
+                                                    habilidades.map((item) => (
+                                                        <option value={
+                                                            item.id
+                                                        } > {
+                                                                item.tipo
+                                                            } </option>
+                                                    ))
+                                                } </select> :
+                                                null
+                                        }
                                     </div>
-                                    {
-                                        pelagens !== undefined ?
-                                            <select > {
-                                                pelagens.map((item) => (
-                                                    <option value={
+                                    <div>
+                                        {
+                                            haras !== undefined ?
+                                                <select onChange={(e) => setHaras_id(e.target.value)}> {
+                                                    haras.map((item) => (
+                                                        <option value={
+                                                            item.id
+                                                        }> {
+                                                                item.nome
+                                                            } </option>
+                                                    ))
+                                                } </select> :
+                                                null
+                                        }
+                                    </div>
+                                    <div>
+                                        {
+                                            pelagens !== undefined ?
+                                                <select onChange={(e) => setPelagem_id(e.target.value)}> {
+                                                    pelagens.map((item) => (
+                                                        <option value={
+                                                            item.id
+                                                        } > {
+                                                                item.nome
+                                                            } </option>
+                                                    ))} </select> :
+                                                null
+                                        }
+                                    </div>
+                                    <div>
+                                        {
+                                            racas !== undefined ?
+                                                <select onChange={(e) => setRaca_id(e.target.value)}> {
+                                                    racas.map((item) => (
+                                                        <option value={
+                                                            item.id
+                                                        } > {
+                                                                item.nome
+                                                            } </option>
+                                                    ))
+                                                } </select> :
+                                                null
+                                        }
+                                    </div>
+                                    <div>
+                                        {
+                                            usuarios !== undefined ?
+                                                <select onChange={(e) => set_Usuario_id(e.target.value)}> {
+                                                    usuarios.map((item) => (<option value={
                                                         item.id
                                                     } > {
                                                             item.nome
                                                         } </option>
-                                                ))} </select> :
-                                            null
-                                    }
-                                    <div class="input-group input-group-mb mb-3" >
-                                        <div class="input-group-prepend" >
-
-                                            <span class="input-group-text"
-                                                id="inputGroup-sizing-sm" > Pelagem </span>
-                                        </div> <
-                                            input type="text"
-                                            class="form-control"
-                                            onChange={
-                                                e => setPelagem_id(e.target.value)
-                                            }
-                                        /> </div>
-
-                                    {
-                                        racas !== undefined ?
-                                            <select > {
-                                                racas.map((item) => (
-                                                    <option value={
+                                                    ))
+                                                } </select> :
+                                                null
+                                        }
+                                    </div>
+                                    <div>
+                                        {
+                                            videos !== undefined ?
+                                                <select onChange={(e) => setVideo_id(e.target.value)}> {
+                                                    videos.map((item) => (<option value={
                                                         item.id
                                                     } > {
-                                                            item.nome
+                                                            item.url
                                                         } </option>
-                                                ))
-                                            } </select> :
-                                            null
-                                    }
-                                    <div class="input-group input-group-mb mb-3" >
-
-                                        <div class="input-group-prepend" >
-                                            <span class="input-group-text"
-                                                id="inputGroup-sizing-sm" > Raça </span>
-                                        </div> <
-                                            input type="text"
-                                            class="form-control"
-                                            onChange={
-                                                e => setRaca_id(e.target.value)
-                                            }
-                                        /> </div>
-
-                                    {
-                                        usuarios !== undefined ?
-                                            <select > {
-                                                usuarios.map((item) => (<option value={
-                                                    item.id
-                                                } > {
-                                                        item.nome
-                                                    } </option>
-                                                ))
-                                            } </select> :
-                                            null
-                                    }
-                                    <div class="input-group input-group-mb mb-3" >
-
-                                        <div class="input-group-prepend" >
-                                            <span class="input-group-text"
-                                                id="inputGroup-sizing-sm" > Comprador </span> </div> <
-                                            input type="text"
-                                            class="form-control"
-                                            onChange={
-                                                e => set_Usuario_id(e.target.value)
-                                            }
-                                        /> </div>
-
-                                    {
-
-                                        videos !== undefined ?
-                                            <select > {
-                                                videos.map((item) => (<option value={
-                                                    item.id
-                                                } > {
-                                                        item.url
-                                                    } </option>
-                                                ))
-                                            } </select> :
-                                            null
-                                    }
-                                    <div class="input-group input-group-mb mb-3" >
-                                        <div class="input-group-prepend" >
-                                            <span class="input-group-text"
-                                                id="inputGroup-sizing-sm" > Videos </span> </div> <
-                                            input type="text"
-                                            class="form-control"
-                                            onChange={
-                                                e => setVideo_id(e.target.value)
-                                            }
-                                        /> </div> <div class="text-center" >
+                                                    ))
+                                                } </select> :
+                                                null
+                                        }
+                                    </div>
+                                     <div class="text-center" >
                                         <button class="btn btn-success mb-2"
                                             type="submit" > Salvar </button>
                                     </div>

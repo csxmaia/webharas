@@ -5,7 +5,7 @@ import {
   Route,
   Link,
 } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import './bootstrap.min.css';
 import Home from './pages/Home'
 import Registrar from './pages/Registrar'
 import Listar from './pages/Cavalos/Listar'

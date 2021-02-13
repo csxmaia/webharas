@@ -37,9 +37,9 @@ function Registrar() {
       senha,
       cidade_id
     }
-    console.warn(nome)
+    console.warn(data)
     //estrutura para enviar os dados para a url
-    const response = await api.post("/usuario", data);
+    // const response = await api.post("/usuario", data);
   }
   //return exibe o que vai ser exibido na tela
   return (
@@ -105,7 +105,7 @@ function Registrar() {
                 }
                 {
                   cidades !== undefined ?
-                    <select>
+                    <select onChange={(e) => setCidade_id(e.target.value)}>
                       {cidades.map((item) => (
                         <option value={item.id}>{item.nome}</option>
                       ))}
@@ -113,12 +113,6 @@ function Registrar() {
                     : null
                 }
 
-                <div class="input-group input-group-lg mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Cidade</span>
-                  </div>
-                  <input type="text" class="form-control" onChange={e => setCidade_id(e.target.value)} />
-                </div>
                 <div class="text-center">
                   <button class="btn btn-success mb-2" type="submit">Salvar</button>
                 </div>

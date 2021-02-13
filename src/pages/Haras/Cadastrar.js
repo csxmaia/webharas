@@ -5,15 +5,16 @@ import api from '../../services/api'
 
 function Cadastrar() {
 
-    //"Variavel", onde voce consegue setar o valor de nome utilizando a função setNome()
-    const [nome, setNome] = useState();
-    const [descricao, setDescricao] = useState();
     const [cidades, setCidades] = useState();
     const [usuarios, setUsuarios] = useState();
-    const [contatos, setContatos] = useState();
+
+    const [nome, setNome] = useState();
+    const [descricao, setDescricao] = useState();
+
+    const [nomeContato, setNomeContato] = useState();
+    const [telefoneContato, setTelefoneContato] = useState();
 
     const [cidade_id, setCidade_id] = useState();
-    const [contato_id, setContato_id] = useState();
     const [usuario_id, setUsuario_id] = useState();
 
     //useEffect é a primeira função que executa ao entrar na tela
@@ -22,42 +23,36 @@ function Cadastrar() {
             const { data } = await api.get("/cidade")
             setCidades(data)
         }
-
-        getCidade()
-    }, [])
-
-    useEffect(() => {
-        async function getContato() {
-            const { data } = await api.get("/contato")
-            setContatos(data)
-        }
-
-        getContato()
-    }, [])
-
-    useEffect(() => {
-        async function getUsuario() {
+        async function getUsuarios() {
             const { data } = await api.get("/usuario")
             setUsuarios(data)
         }
 
-        getUsuario()
+        getUsuarios()
+        getCidade()
     }, [])
 
     // ao clicar no submit cai nessa função
     async function saveData(e) {
         e.preventDefault();
-        //cria o objeto data para enviar para a url
+
+        const objectToContato = {
+            nome: nomeContato,
+            telefone: telefoneContato
+        }
+        const response = await api.post("/telefonecontatoharas/return", objectToContato)
+
         const data = {
             nome,
-            cidade_id,
-            contato_id,
             descricao,
-            usuario_id
+            cidade_id,
+            usuario_id: parseInt(usuario_id),
+            contato_id: response.data.id,
         }
-        console.warn(nome)
-        //estrutura para enviar os dados para a url
-        const response = await api.post("/cavalo", data)
+        console.warn(data)
+        // const responseHaras = await api.post("/haras", data)
+        // console.warn(responseHaras)
+        // alert("Haras cadastrado")
     }
     //return exibe o que vai ser exibido na tela
     return (
@@ -82,83 +77,47 @@ function Cadastrar() {
                                     </div>
                                     <input type="text" class="form-control" onChange={e => setDescricao(e.target.value)} />
                                 </div>
-
-                                {
-                                    //Como a busca da cidade demora uma quantidade consideravel de tempo lá no useEffect, devemos fazer a condição
-                                    //de que o select da cidade só exiba quando for diferente de indefinido (undefined)
-                                    //if ternario:
-                                    //
-                                    // condicao == true ?
-                                    //    codigo caso verdadeiro
-                                    // :
-                                    //    codigo caso falso
-                                }
-
-                                {
-                                    usuarios !== undefined ?
-                                        <select>
-                                            {usuarios.map((item) => (
-                                                <option value={item.id}>{item.nome}</option>
-                                            ))}
-                                        </select>
-                                        : null
-                                }
+                                <div>
+                                    Cidade
+                                    {
+                                        cidades !== undefined ?
+                                            <select onChange={(e) => setCidade_id(e.target.value)}>
+                                                <option value={0}>Selecione...</option>
+                                                {cidades.map((item) => (
+                                                    <option value={item.id}>{item.nome}</option>
+                                                ))}
+                                            </select>
+                                            : null
+                                    }
+                                </div>
+                                <div>
+                                    Seu usuario
+                                    {
+                                        usuarios !== undefined ?
+                                            <select onChange={(e) => setUsuario_id(e.target.value)}>
+                                                <option value={0}>Selecione...</option>
+                                                {usuarios.map((item) => (
+                                                    <option value={item.id}>{item.nome}</option>
+                                                ))}
+                                            </select>
+                                            : null
+                                    }
+                                </div>
+                                <br/>
+                                <h4>Contato</h4>
                                 <div class="input-group input-group-lg mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-sm">Comprador</span>
+                                        <span class="input-group-text" id="inputGroup-sizing-sm">Nome</span>
                                     </div>
-                                    <input type="text" class="form-control" onChange={e => setUsuario_id(e.target.value)} />
+                                    <input type="text" class="form-control" onChange={e => setNomeContato(e.target.value)} />
                                 </div>
 
-                                {
-                                    cidades !== undefined ?
-                                        <select>
-                                            {cidades.map((item) => (
-                                                <option value={item.id}>{item.nome}</option>
-                                            ))}
-                                        </select>
-                                        : null
-                                }
                                 <div class="input-group input-group-lg mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-sm">Cidade</span>
+                                        <span class="input-group-text" id="inputGroup-sizing-sm">Telefone</span>
                                     </div>
-                                    <input type="text" class="form-control" onChange={e => setCidade_id(e.target.value)} />
+                                    <input type="text" class="form-control" onChange={e => setTelefoneContato(e.target.value)} />
                                 </div>
-
-                                {
-                                    contatos !== undefined ?
-                                        <select>
-                                            {contatos.map((item) => (
-                                                <option value={item.id}>{item.nome}</option>
-                                            ))}
-                                        </select>
-                                        : null
-                                }
-                                <div class="input-group input-group-lg mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-sm">Contato</span>
-                                    </div>
-                                    <input type="text" class="form-control" onChange={e => setContato_id(e.target.value)} />
-                                </div>
-
-
-                                {
-                                    cidades !== undefined ?
-                                        <select>
-                                            {cidades.map((item) => (
-                                                <option value={item.id}>{item.nome}</option>
-                                            ))}
-                                        </select>
-                                        : null
-                                }
-                                <div class="input-group input-group-lg mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-sm">Cidade</span>
-                                    </div>
-                                    <input type="text" class="form-control" onChange={e => setCidade_id(e.target.value)} />
-                                </div>
-
 
                                 <div class="text-center">
                                     <button class="btn btn-success mb-2" type="submit">Salvar</button>
