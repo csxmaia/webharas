@@ -10,6 +10,7 @@ function Listar() {
   useEffect(() => {
     async function getCavalos() {
       const { data } = await api.get("/cavalo")
+      console.warn(data)
       setCavalos(data)
     }
     getCavalos()
@@ -30,14 +31,21 @@ function Listar() {
         </div>
       </div>
       <div>
-        <div style={{height: "100px", width: "100px", borderWidth: "1px", borderStyle: 'solid'}}>
-          {cavalos !== undefined ?
-            cavalos.map(function(cavalo) {
-              <div>{cavalo.nome}</div>
-            })
-            : null
-          }
-        </div>
+        {cavalos !== undefined ?
+          cavalos.map((cavalo) => ( 
+            <div style={{height: "150px", width: "150px", borderWidth: "1px", borderStyle: 'solid'}}>
+              <img src={cavalo.imagens[0].url} />
+              {cavalo.nome}
+              {cavalo.descricao}
+              {/* console.warn(cavalo) */}
+              {/* // <div>{cavalo.nome}</div> */}
+              <div styl>
+                <button>Comprar cavalo</button>
+              </div>
+            </div>
+          ))
+          : null
+        }
       </div>
     </div>
   )
