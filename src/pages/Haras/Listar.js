@@ -9,7 +9,7 @@ function Listar() {
 
   useEffect(() => {
     async function getHaras() {
-      const { data } = await api.get("/cavalo")
+      const { data } = await api.get("/haras")
       setHaras(data)
     }
     getHaras()
@@ -33,11 +33,13 @@ function Listar() {
                 </div>
               </div>
               <div>
-                <div style={{ height: "100px", width: "100px", borderWidth: "1px", borderStyle: 'solid' }}>
+                <div class="card">
                   {haras !== undefined ?
-                    haras.map(function (haras) {
-                      <div>{haras.nome}</div>
-                    })
+                    haras.map((haras) => (
+                      <ul class="list-group">
+                        <li class="list-group-item">{haras.nome}</li>
+                      </ul>
+                    ))
                     : null
                   }
                 </div>
@@ -46,7 +48,7 @@ function Listar() {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 

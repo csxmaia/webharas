@@ -40,7 +40,7 @@ function Cadastrar() {
             } = await api.get("/cidade")
             setCidades(data)
         }
-         async function getGenero() {
+        async function getGenero() {
             const {
                 data
             } = await api.get("/genero")
@@ -176,125 +176,155 @@ function Cadastrar() {
                                         //    codigo caso verdadeiro
                                         // :
                                         //    codigo caso falso
-                                    } 
-                                    <div>
+                                    }
+                                    <div class="input-group input-group-lg mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroup-sizing-sm">Cidade</span>
+                                        </div>
                                         {
                                             cidades !== undefined ?
-                                                <select onChange={(e) => setCidade_id(e.target.value)}> {
-                                                    cidades.map((item) => (<
-                                                        option value={
-                                                            item.id
-                                                        } > {
-                                                            item.nome
-                                                        } </option>
-                                                    ))
-                                                } </select> :
-                                                null
+                                                <select class="form-control" onChange={(e) => setCidade_id(e.target.value)}>
+                                                    <option value={0}>Selecione...</option>
+                                                    {cidades.map((item) => (
+                                                        <option value={item.id}>{item.nome}</option>
+                                                    ))}
+                                                </select>
+                                                : null
                                         }
                                     </div>
-                                    <div>
+                                    <div class="input-group input-group-lg mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroup-sizing-sm">Genero</span>
+                                        </div>
                                         {
                                             gereros !== undefined ?
-                                                <select  onChange={(e) => setGenero_id(e.target.value)}> {
-                                                    gereros.map((item) => (
+                                                <select class="form-control" onChange={(e) => setGenero_id(e.target.value)}>
+                                                    <option value={0}>Selecione...</option>
+                                                    {gereros.map((item) => (
                                                         <option value={
                                                             item.id
                                                         } > {
                                                                 item.nome
                                                             } </option>
-                                                    ))
-                                                } </select> :
+                                                    ))}
+                                                </select> :
                                                 null
                                         }
                                     </div>
-                                    <div>
+                                    <div class="input-group input-group-lg mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroup-sizing-sm">Habilidades</span>
+                                        </div>
                                         {
                                             habilidades !== undefined ?
-                                                <select onChange={(e) => setHabilidade_id(e.target.value)}> {
-                                                    habilidades.map((item) => (
-                                                        <option value={
-                                                            item.id
-                                                        } > {
-                                                                item.tipo
-                                                            } </option>
-                                                    ))
-                                                } </select> :
+                                                <select class="form-control" onChange={(e) => setHabilidade_id(e.target.value)}>
+                                                    <option value={0}>Selecione...</option>
+                                                    {
+                                                        habilidades.map((item) => (
+                                                            <option value={
+                                                                item.id
+                                                            } > {
+                                                                    item.tipo
+                                                                } </option>
+                                                        ))
+                                                    } </select> :
                                                 null
                                         }
                                     </div>
-                                    <div>
+                                    <div class="input-group input-group-lg mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroup-sizing-sm">Haras</span>
+                                        </div>
                                         {
                                             haras !== undefined ?
-                                                <select onChange={(e) => setHaras_id(e.target.value)}> {
-                                                    haras.map((item) => (
-                                                        <option value={
-                                                            item.id
-                                                        }> {
-                                                                item.nome
-                                                            } </option>
-                                                    ))
-                                                } </select> :
+                                                <select class="form-control" onChange={(e) => setHaras_id(e.target.value)}>
+                                                    <option value={0}>Selecione...</option>
+                                                    {
+                                                        haras.map((item) => (
+                                                            <option value={
+                                                                item.id
+                                                            }> {
+                                                                    item.nome
+                                                                } </option>
+                                                        ))
+                                                    } </select> :
                                                 null
                                         }
                                     </div>
-                                    <div>
-                                        {
-                                            pelagens !== undefined ?
-                                                <select onChange={(e) => setPelagem_id(e.target.value)}> {
-                                                    pelagens.map((item) => (
-                                                        <option value={
-                                                            item.id
-                                                        } > {
-                                                                item.nome
-                                                            } </option>
-                                                    ))} </select> :
-                                                null
+                                    <div class="input-group input-group-lg mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroup-sizing-sm">Pelagens</span>
+                                        </div>
+                                        {pelagens !== undefined ?
+                                            <select class="form-control" onChange={(e) => setPelagem_id(e.target.value)}>
+                                                <option value={0}>Selecione...</option>
+                                                {pelagens.map((item) => (
+                                                    <option value={
+                                                        item.id
+                                                    } > {
+                                                            item.nome
+                                                        } </option>
+                                                ))} </select> :
+                                            null
                                         }
                                     </div>
-                                    <div>
+                                    <div class="input-group input-group-lg mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroup-sizing-sm">Raças</span>
+                                        </div>
                                         {
                                             racas !== undefined ?
-                                                <select onChange={(e) => setRaca_id(e.target.value)}> {
-                                                    racas.map((item) => (
-                                                        <option value={
-                                                            item.id
-                                                        } > {
-                                                                item.nome
-                                                            } </option>
-                                                    ))
-                                                } </select> :
+                                                <select class="form-control" onChange={(e) => setRaca_id(e.target.value)}>
+                                                    <option value={0}>Selecione...</option>
+                                                    {
+                                                        racas.map((item) => (
+                                                            <option value={
+                                                                item.id
+                                                            } > {
+                                                                    item.nome
+                                                                } </option>
+                                                        ))
+                                                    } </select> :
                                                 null
                                         }
                                     </div>
-                                    <div>
+                                    <div class="input-group input-group-lg mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroup-sizing-sm">Comprador</span>
+                                        </div>
                                         {
                                             usuarios !== undefined ?
-                                                <select onChange={(e) => set_Usuario_id(e.target.value)}> {
-                                                    usuarios.map((item) => (<option value={
+                                                <select class="form-control" onChange={(e) => set_Usuario_id(e.target.value)}>
+                                                    <option value={0}>Selecione...</option>
+                                                    {usuarios.map((item) => (<option value={
                                                         item.id
                                                     } > {
                                                             item.nome
                                                         } </option>
                                                     ))
-                                                } </select> :
+                                                    } </select> :
                                                 null
                                         }
                                     </div>
-                                    <div>
+                                    <div class="input-group input-group-lg mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroup-sizing-sm">Videos</span>
+                                        </div>
                                         {
                                             videos !== undefined ?
-                                                <select onChange={(e) => setVideo_id(e.target.value)}> {
-                                                    videos.map((item) => (<option value={
+                                                <select class="form-control" onChange={(e) => setVideo_id(e.target.value)}>
+                                                    <option value={0}>Selecione...</option>
+                                                    {videos.map((item) => (<option value={
                                                         item.id
                                                     } > {
                                                             item.url
                                                         } </option>
                                                     ))
-                                                } </select> :
+                                                    } </select> :
                                                 null
                                         }
                                     </div>
-                                     <div class="text-center" >
+                                    <div class="text-center" >
                                         <button class="btn btn-success mb-2"
                                             type="submit" > Salvar </button>
                                     </div>

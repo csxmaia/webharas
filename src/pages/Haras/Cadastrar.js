@@ -50,7 +50,7 @@ function Cadastrar() {
             contato_id: response.data.id,
         }
         console.warn(data)
-        // const responseHaras = await api.post("/haras", data)
+        const responseHaras = await api.post("/haras", data)
         // console.warn(responseHaras)
         // alert("Haras cadastrado")
     }

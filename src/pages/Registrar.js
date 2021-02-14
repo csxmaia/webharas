@@ -39,7 +39,7 @@ function Registrar() {
     }
     console.warn(data)
     //estrutura para enviar os dados para a url
-    // const response = await api.post("/usuario", data);
+    const response = await api.post("/usuario", data);
   }
   //return exibe o que vai ser exibido na tela
   return (
